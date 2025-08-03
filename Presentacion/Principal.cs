@@ -46,7 +46,7 @@ namespace Servidor
                 clientesConectados++;
 
                 if (InvokeRequired)
-                    Invoke(new Action(() => Txt_Clientes.Text = clientesConectados.ToString())); 
+                    Invoke(new Action(() => txtClientes.Text = clientesConectados.ToString())); 
                 Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClientComm));
                 clientThread.Start(client);
             }
@@ -77,7 +77,7 @@ namespace Servidor
 
                     if (InvokeRequired)
                     {
-                        Invoke(new Action(() => Txt_Clientes.Text = clientesConectados.ToString()));
+                        Invoke(new Action(() => txtClientes.Text = clientesConectados.ToString()));
                     }
                     break;
                 }
