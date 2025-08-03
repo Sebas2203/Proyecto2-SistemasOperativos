@@ -16,5 +16,10 @@ namespace Servidor.Presentacion
         {
             InitializeComponent();
         }
+
+        private void lblCosto_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

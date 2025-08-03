@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.Txt_Mensajes = new System.Windows.Forms.TextBox();
-            this.Lbl_Clientes = new System.Windows.Forms.Label();
-            this.Txt_Clientes = new System.Windows.Forms.TextBox();
+            this.lblClientesConectados = new System.Windows.Forms.Label();
+            this.txtClientes = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Txt_Mensajes
@@ -41,31 +41,32 @@
             this.Txt_Mensajes.Size = new System.Drawing.Size(755, 335);
             this.Txt_Mensajes.TabIndex = 0;
             // 
-            // Lbl_Clientes
+            // lblClientesConectados
             // 
-            this.Lbl_Clientes.AutoSize = true;
-            this.Lbl_Clientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Clientes.Location = new System.Drawing.Point(171, 47);
-            this.Lbl_Clientes.Name = "Lbl_Clientes";
-            this.Lbl_Clientes.Size = new System.Drawing.Size(236, 29);
-            this.Lbl_Clientes.TabIndex = 1;
-            this.Lbl_Clientes.Text = "Clientes Conectados";
+            this.lblClientesConectados.AutoSize = true;
+            this.lblClientesConectados.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold);
+            this.lblClientesConectados.Location = new System.Drawing.Point(171, 47);
+            this.lblClientesConectados.Name = "lblClientesConectados";
+            this.lblClientesConectados.Size = new System.Drawing.Size(196, 27);
+            this.lblClientesConectados.TabIndex = 1;
+            this.lblClientesConectados.Text = "Clientes Conectados";
             // 
-            // Txt_Clientes
+            // txtClientes
             // 
-            this.Txt_Clientes.Enabled = false;
-            this.Txt_Clientes.Location = new System.Drawing.Point(427, 53);
-            this.Txt_Clientes.Name = "Txt_Clientes";
-            this.Txt_Clientes.Size = new System.Drawing.Size(185, 22);
-            this.Txt_Clientes.TabIndex = 2;
+            this.txtClientes.Enabled = false;
+            this.txtClientes.Location = new System.Drawing.Point(373, 47);
+            this.txtClientes.Name = "txtClientes";
+            this.txtClientes.Size = new System.Drawing.Size(185, 22);
+            this.txtClientes.TabIndex = 2;
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.OldLace;
             this.ClientSize = new System.Drawing.Size(779, 463);
-            this.Controls.Add(this.Txt_Clientes);
-            this.Controls.Add(this.Lbl_Clientes);
+            this.Controls.Add(this.txtClientes);
+            this.Controls.Add(this.lblClientesConectados);
             this.Controls.Add(this.Txt_Mensajes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Principal";
@@ -79,8 +80,8 @@
         #endregion
 
         private System.Windows.Forms.TextBox Txt_Mensajes;
-        private System.Windows.Forms.Label Lbl_Clientes;
-        private System.Windows.Forms.TextBox Txt_Clientes;
+        private System.Windows.Forms.Label lblClientesConectados;
+        private System.Windows.Forms.TextBox txtClientes;
     }
 }
 

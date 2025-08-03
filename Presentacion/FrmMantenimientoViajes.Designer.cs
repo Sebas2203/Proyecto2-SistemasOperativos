@@ -28,195 +28,227 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblCodigoViaje = new System.Windows.Forms.Label();
+            this.lblDescripcion = new System.Windows.Forms.Label();
+            this.lblTerminalSalida = new System.Windows.Forms.Label();
+            this.lblTerminalLlegada = new System.Windows.Forms.Label();
+            this.lblCapacidad = new System.Windows.Forms.Label();
+            this.lblCosto = new System.Windows.Forms.Label();
             this.txtCodigoViaje = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.txtTerminalSalida = new System.Windows.Forms.TextBox();
+            this.txtTerminalLlegada = new System.Windows.Forms.TextBox();
+            this.txtCapacidad = new System.Windows.Forms.TextBox();
+            this.txtCosto = new System.Windows.Forms.TextBox();
+            this.btnGrabar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.lblMantenimientoViajes = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lblCodigoViaje
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 28);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Código de Viaje";
+            this.lblCodigoViaje.AutoSize = true;
+            this.lblCodigoViaje.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigoViaje.Location = new System.Drawing.Point(40, 112);
+            this.lblCodigoViaje.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCodigoViaje.Name = "lblCodigoViaje";
+            this.lblCodigoViaje.Size = new System.Drawing.Size(106, 18);
+            this.lblCodigoViaje.TabIndex = 0;
+            this.lblCodigoViaje.Text = "Código de Viaje";
             // 
-            // label2
+            // lblDescripcion
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(41, 114);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Descripción";
+            this.lblDescripcion.AutoSize = true;
+            this.lblDescripcion.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold);
+            this.lblDescripcion.Location = new System.Drawing.Point(35, 168);
+            this.lblDescripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDescripcion.Name = "lblDescripcion";
+            this.lblDescripcion.Size = new System.Drawing.Size(121, 27);
+            this.lblDescripcion.TabIndex = 1;
+            this.lblDescripcion.Text = "Descripción";
             // 
-            // label3
+            // lblTerminalSalida
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(41, 210);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 16);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Terminal de Salida";
+            this.lblTerminalSalida.AutoSize = true;
+            this.lblTerminalSalida.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTerminalSalida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblTerminalSalida.Location = new System.Drawing.Point(620, 257);
+            this.lblTerminalSalida.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTerminalSalida.Name = "lblTerminalSalida";
+            this.lblTerminalSalida.Size = new System.Drawing.Size(153, 23);
+            this.lblTerminalSalida.TabIndex = 2;
+            this.lblTerminalSalida.Text = "Terminal de Salida";
             // 
-            // label4
+            // lblTerminalLlegada
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(41, 298);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 16);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Terminal de LLegada";
+            this.lblTerminalLlegada.AutoSize = true;
+            this.lblTerminalLlegada.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTerminalLlegada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblTerminalLlegada.Location = new System.Drawing.Point(603, 301);
+            this.lblTerminalLlegada.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTerminalLlegada.Name = "lblTerminalLlegada";
+            this.lblTerminalLlegada.Size = new System.Drawing.Size(170, 23);
+            this.lblTerminalLlegada.TabIndex = 3;
+            this.lblTerminalLlegada.Text = "Terminal de LLegada";
             // 
-            // label5
+            // lblCapacidad
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(41, 373);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(74, 16);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Capacidad";
+            this.lblCapacidad.AutoSize = true;
+            this.lblCapacidad.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCapacidad.Location = new System.Drawing.Point(49, 253);
+            this.lblCapacidad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCapacidad.Name = "lblCapacidad";
+            this.lblCapacidad.Size = new System.Drawing.Size(92, 23);
+            this.lblCapacidad.TabIndex = 4;
+            this.lblCapacidad.Text = "Capacidad";
             // 
-            // label6
+            // lblCosto
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 447);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 16);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Costo";
+            this.lblCosto.AutoSize = true;
+            this.lblCosto.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCosto.Location = new System.Drawing.Point(92, 297);
+            this.lblCosto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCosto.Name = "lblCosto";
+            this.lblCosto.Size = new System.Drawing.Size(54, 23);
+            this.lblCosto.TabIndex = 5;
+            this.lblCosto.Text = "Costo";
+            this.lblCosto.Click += new System.EventHandler(this.lblCosto_Click);
             // 
             // txtCodigoViaje
             // 
-            this.txtCodigoViaje.Location = new System.Drawing.Point(340, 28);
-            this.txtCodigoViaje.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigoViaje.Location = new System.Drawing.Point(164, 110);
+            this.txtCodigoViaje.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigoViaje.Name = "txtCodigoViaje";
-            this.txtCodigoViaje.Size = new System.Drawing.Size(168, 22);
+            this.txtCodigoViaje.Size = new System.Drawing.Size(85, 22);
             this.txtCodigoViaje.TabIndex = 6;
             // 
-            // textBox2
+            // txtDescripcion
             // 
-            this.textBox2.Location = new System.Drawing.Point(340, 114);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(409, 22);
-            this.textBox2.TabIndex = 7;
+            this.txtDescripcion.Location = new System.Drawing.Point(164, 173);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(947, 22);
+            this.txtDescripcion.TabIndex = 7;
             // 
-            // textBox3
+            // txtTerminalSalida
             // 
-            this.textBox3.Location = new System.Drawing.Point(340, 207);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(249, 22);
-            this.textBox3.TabIndex = 8;
+            this.txtTerminalSalida.AllowDrop = true;
+            this.txtTerminalSalida.Location = new System.Drawing.Point(781, 259);
+            this.txtTerminalSalida.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTerminalSalida.Name = "txtTerminalSalida";
+            this.txtTerminalSalida.Size = new System.Drawing.Size(330, 22);
+            this.txtTerminalSalida.TabIndex = 8;
             // 
-            // textBox4
+            // txtTerminalLlegada
             // 
-            this.textBox4.Location = new System.Drawing.Point(340, 289);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(205, 22);
-            this.textBox4.TabIndex = 9;
+            this.txtTerminalLlegada.AllowDrop = true;
+            this.txtTerminalLlegada.Location = new System.Drawing.Point(781, 303);
+            this.txtTerminalLlegada.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTerminalLlegada.Name = "txtTerminalLlegada";
+            this.txtTerminalLlegada.Size = new System.Drawing.Size(330, 22);
+            this.txtTerminalLlegada.TabIndex = 9;
             // 
-            // textBox5
+            // txtCapacidad
             // 
-            this.textBox5.Location = new System.Drawing.Point(340, 373);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(147, 22);
-            this.textBox5.TabIndex = 10;
+            this.txtCapacidad.Location = new System.Drawing.Point(164, 255);
+            this.txtCapacidad.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCapacidad.Name = "txtCapacidad";
+            this.txtCapacidad.Size = new System.Drawing.Size(103, 22);
+            this.txtCapacidad.TabIndex = 10;
             // 
-            // textBox6
+            // txtCosto
             // 
-            this.textBox6.Location = new System.Drawing.Point(340, 438);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(147, 22);
-            this.textBox6.TabIndex = 11;
+            this.txtCosto.Location = new System.Drawing.Point(164, 299);
+            this.txtCosto.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCosto.Name = "txtCosto";
+            this.txtCosto.Size = new System.Drawing.Size(103, 22);
+            this.txtCosto.TabIndex = 11;
             // 
-            // button1
+            // btnGrabar
             // 
-            this.button1.Location = new System.Drawing.Point(409, 530);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Grabar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnGrabar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrabar.ForeColor = System.Drawing.Color.Olive;
+            this.btnGrabar.Location = new System.Drawing.Point(41, 409);
+            this.btnGrabar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGrabar.Name = "btnGrabar";
+            this.btnGrabar.Size = new System.Drawing.Size(100, 28);
+            this.btnGrabar.TabIndex = 12;
+            this.btnGrabar.Text = "Grabar";
+            this.btnGrabar.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnEliminar
             // 
-            this.button2.Location = new System.Drawing.Point(605, 530);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 28);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Eliminar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnEliminar.Location = new System.Drawing.Point(167, 409);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(100, 28);
+            this.btnEliminar.TabIndex = 13;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnLimpiar
             // 
-            this.button3.Location = new System.Drawing.Point(785, 530);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 28);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "Limpiar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnLimpiar.Location = new System.Drawing.Point(295, 409);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(100, 28);
+            this.btnLimpiar.TabIndex = 14;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnSalir
             // 
-            this.button4.Location = new System.Drawing.Point(959, 530);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 28);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "Salir";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSalir.Location = new System.Drawing.Point(1011, 408);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(100, 28);
+            this.btnSalir.TabIndex = 15;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            // 
+            // lblMantenimientoViajes
+            // 
+            this.lblMantenimientoViajes.AutoSize = true;
+            this.lblMantenimientoViajes.Font = new System.Drawing.Font("Palatino Linotype", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMantenimientoViajes.Location = new System.Drawing.Point(304, 18);
+            this.lblMantenimientoViajes.Name = "lblMantenimientoViajes";
+            this.lblMantenimientoViajes.Size = new System.Drawing.Size(523, 46);
+            this.lblMantenimientoViajes.TabIndex = 16;
+            this.lblMantenimientoViajes.Text = "Mantenimiento Viajes - Numbat";
             // 
             // FrmMantenimientoViajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1144, 574);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1144, 483);
+            this.Controls.Add(this.lblMantenimientoViajes);
+            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnGrabar);
+            this.Controls.Add(this.txtCosto);
+            this.Controls.Add(this.txtCapacidad);
+            this.Controls.Add(this.txtTerminalLlegada);
+            this.Controls.Add(this.txtTerminalSalida);
+            this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtCodigoViaje);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblCosto);
+            this.Controls.Add(this.lblCapacidad);
+            this.Controls.Add(this.lblTerminalLlegada);
+            this.Controls.Add(this.lblTerminalSalida);
+            this.Controls.Add(this.lblDescripcion);
+            this.Controls.Add(this.lblCodigoViaje);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "FrmMantenimientoViajes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -228,21 +260,22 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblCodigoViaje;
+        private System.Windows.Forms.Label lblDescripcion;
+        private System.Windows.Forms.Label lblTerminalSalida;
+        private System.Windows.Forms.Label lblTerminalLlegada;
+        private System.Windows.Forms.Label lblCapacidad;
+        private System.Windows.Forms.Label lblCosto;
         private System.Windows.Forms.TextBox txtCodigoViaje;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.TextBox txtTerminalSalida;
+        private System.Windows.Forms.TextBox txtTerminalLlegada;
+        private System.Windows.Forms.TextBox txtCapacidad;
+        private System.Windows.Forms.TextBox txtCosto;
+        private System.Windows.Forms.Button btnGrabar;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label lblMantenimientoViajes;
     }
 }
