@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="Presentacion\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Viaje.cs" />
     <EmbeddedResource Include="Presentacion\FrmMantenimientoViajes.resx">
       <DependentUpon>FrmMantenimientoViajes.cs</DependentUpon>
     </EmbeddedResource>
