@@ -16,6 +16,7 @@ namespace Servidor.Presentacion
 
         public FrmMantenimientoViajes()
         {
+            //programa prueba
             InitializeComponent();
         }
 
