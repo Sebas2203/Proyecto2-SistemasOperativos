@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Servidor.Presentacion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,15 +9,23 @@ namespace Servidor
 {
     internal static class Program
     {
-        /// <summary>
-        /// Punto de entrada principal para la aplicación.
-        /// </summary>
-        [STAThread]
+
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Principal());
+            /*Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            // Abrir primero el mantenimiento de viajes
+            using (FrmMantenimientoViajes frmMantenimiento = new FrmMantenimientoViajes())
+            {
+                frmMantenimiento.ShowDialog();
+            }
+
+            // Al cerrarlo, abrir el formulario Principal
+            Application.Run(new Principal());*/
         }
     }
 }

@@ -1,4 +1,10 @@
-﻿namespace Servidor.Presentacion
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Servidor.Presentacion
 {
     public class Viaje
     {
@@ -28,7 +34,8 @@
         {
             for (int i = 0; i < 13; i++)
                 for (int j = 0; j < 7; j++)
-                    Asientos[i, j] = 1; // disponible
+                    Asientos[i, j] = 1; // 1 = disponible
         }
+        // 1=disponible, 0=ocupado
     }
 }

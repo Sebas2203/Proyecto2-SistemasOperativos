@@ -12,10 +12,10 @@ namespace Servidor.Presentacion
 {
     public partial class FrmMantenimientoViajes : Form
     {
-        private List<Viaje> viajes = new List<Viaje>();
-
+        
         public FrmMantenimientoViajes()
         {
+
             InitializeComponent();
         }
 
@@ -24,19 +24,17 @@ namespace Servidor.Presentacion
 
         }
 
-        // Botón GRABAR
+
         private void btnGrabar_Click(object sender, EventArgs e)
         {
             if (!ValidarCampos()) return;
 
-            // Verificar que no exista un viaje con el mismo código
-            if (viajes.Any(v => v.Codigo == txtCodigoViaje.Text))
+            if (RepositorioViajes.BuscarPorCodigo(txtCodigoViaje.Text) != null)
             {
                 MessageBox.Show("Ya existe un viaje con ese código.");
                 return;
             }
 
-            // Crear y agregar viaje
             var nuevoViaje = new Viaje(
                 txtCodigoViaje.Text,
                 txtDescripcion.Text,
@@ -46,40 +44,38 @@ namespace Servidor.Presentacion
                 decimal.Parse(txtCosto.Text)
             );
 
-            viajes.Add(nuevoViaje);
-            MessageBox.Show("Viaje guardado correctamente.");
+            if (RepositorioViajes.Agregar(nuevoViaje))
+                MessageBox.Show("Viaje guardado correctamente.");
+            else
+                MessageBox.Show("No se pudo guardar el viaje.");
+
             LimpiarCampos();
         }
 
-        // Botón ELIMINAR
+
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            var viaje = viajes.FirstOrDefault(v => v.Codigo == txtCodigoViaje.Text);
-            if (viaje != null)
-            {
-                viajes.Remove(viaje);
+            if (RepositorioViajes.Eliminar(txtCodigoViaje.Text))
                 MessageBox.Show("Viaje eliminado correctamente.");
-            }
             else
-            {
                 MessageBox.Show("No se encontró un viaje con ese código.");
-            }
+
             LimpiarCampos();
         }
 
-        // Botón LIMPIAR
+
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
         }
 
-        // Botón SALIR
+
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        // Validar campos antes de grabar
+
         private bool ValidarCampos()
         {
             if (string.IsNullOrWhiteSpace(txtCodigoViaje.Text) ||
@@ -106,7 +102,7 @@ namespace Servidor.Presentacion
             return true;
         }
 
-        // Limpiar cajas de texto
+
         private void LimpiarCampos()
         {
             txtCodigoViaje.Clear();
@@ -115,6 +111,11 @@ namespace Servidor.Presentacion
             txtTerminalLlegada.Clear();
             txtCapacidad.Clear();
             txtCosto.Clear();
+        }
+
+        private void FrmMantenimientoViajes_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
