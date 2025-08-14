@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Net.Sockets;
 using System.Threading;
 using System.Net;
+using Servidor.Presentacion;
 
 
 namespace Servidor
@@ -19,9 +20,9 @@ namespace Servidor
         #region Atributos
         private TcpListener tcpListener;
         private Thread listenThread;
-        private String lastMessage;
         private int clientesConectados;
         #endregion
+
         public Principal()
         {
             InitializeComponent();
@@ -34,23 +35,21 @@ namespace Servidor
             this.listenThread = new Thread(new ThreadStart(ListenForClients));
             this.listenThread.Start();
         }
+
         private void ListenForClients()
         {
             this.tcpListener.Start();
             while (true)
             {
-                //blocks until a client has connected to the server
                 TcpClient client = this.tcpListener.AcceptTcpClient();
-                //create a thread to handle communication
-                //with connected client
                 clientesConectados++;
+                if (InvokeRequired) Invoke(new Action(() => txtClientes.Text = clientesConectados.ToString()));
 
-                if (InvokeRequired)
-                    Invoke(new Action(() => txtClientes.Text = clientesConectados.ToString())); 
                 Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClientComm));
                 clientThread.Start(client);
             }
         }
+
         private void HandleClientComm(object client)
         {
             TcpClient tcpClient = (TcpClient)client;
@@ -58,96 +57,142 @@ namespace Servidor
             ASCIIEncoding encoder = new ASCIIEncoding();
             byte[] message = new byte[4096];
             int bytesRead;
-            while (true)
+
+            try
             {
-                bytesRead = 0;
-                try
+                while (true)
                 {
-                    //blocks until a client sends a message
-                    bytesRead = clientStream.Read(message, 0, 4096);
-                }
-                catch
-                {
-                    //a socket error has occured
-                }
-                if (bytesRead == 0)
-                {
-                    //the client has disconnected from the server
-                    clientesConectados--;
+                    bytesRead = 0;
+                    try { bytesRead = clientStream.Read(message, 0, message.Length); }
+                    catch { break; }
 
-                    if (InvokeRequired)
+                    if (bytesRead == 0) break;
+
+                    string peticion = encoder.GetString(message, 0, bytesRead).Trim();
+                    if (InvokeRequired) Invoke(new Action(() => Txt_Mensajes.AppendText("\n" + peticion)));
+
+                 
+                    if (peticion.Length != 3) { Enviar(clientStream, encoder, "5"); continue; } 
+                    string codigoViaje = peticion.Substring(0, 2);
+                    int cantidadBoletos;
+                    if (!int.TryParse(peticion.Substring(2, 1), out cantidadBoletos)) { Enviar(clientStream, encoder, "5"); continue; }
+                    if (cantidadBoletos < 1 || cantidadBoletos > 5) { Enviar(clientStream, encoder, "3"); continue; } 
+
+               
+                    ResultadoVenta res = RepositorioViajes.IntentarVenderBoletos(codigoViaje, cantidadBoletos);
+
+                    string respuesta;
+                    if (!res.Exito)
                     {
-                        Invoke(new Action(() => txtClientes.Text = clientesConectados.ToString()));
+                        // Errore
+                        var err = (res.MensajeError ?? "").ToLowerInvariant();
+                        if (err.Contains("no existe")) respuesta = "4";
+                        else if (err.Contains("cantidad inválida") || err.Contains("excede")) respuesta = "3";
+                        else if (err.Contains("no hay asientos")) respuesta = "0"; 
+                        else respuesta = "5"; 
                     }
-                    break;
-                }
+                    else
+                    {
 
-                //message has successfully been received
-                //encoder = new ASCIIEncoding();
-                System.Diagnostics.Debug.WriteLine(encoder.GetString(message, 0, bytesRead));
-                lastMessage = encoder.GetString(message, 0, bytesRead);
+                        // 1  : compra realizada verificador (1)
+                        // 3  : excede cantidad verificador (1)
+                        //4   : código de viaje no existe  verificador (1)
+                        //0   : sin asientos verificador (1)
+                        //5   : formato inválido / genérico verificador (1)
 
-
-                if (InvokeRequired)
-                {
-                    Invoke(new Action(() => Txt_Mensajes.Text = "\n" + lastMessage));
-                    int Opcion = Validar_Peticion(Txt_Mensajes.Text);
-                    byte[] buffer = new byte[4096];
-
-                    switch (Txt_Mensajes.Text.Trim())
-                    {  
-                        // hace el proceso de verificacion de la cedula ingresada
-                        case "108040378":
-                            buffer = encoder.GetBytes("1MELVIN CASCANTE MORALES0094SAN ATONIO CORANADO");
-                            clientStream.Write(buffer, 0, buffer.Length);
-                            clientStream.Flush();
-                            break;
-                        case "108040379":
-                            buffer = encoder.GetBytes("1JUANA PEREZ PREZ00105HEREDIA CENTRO");
-                            clientStream.Write(buffer, 0, buffer.Length);
-                            clientStream.Flush();
-                            break;
-                             
-                        case "999999999":
-                            buffer = encoder.GetBytes("2SUTANITO DE TAL APERECE FALLECIDO");
-                            clientStream.Write(buffer, 0, buffer.Length);
-                            clientStream.Flush();
-                            break;
-                        default:
-                            if (Txt_Mensajes.Text.Length < 9)
-                                buffer = encoder.GetBytes("4FORMATO INVALIDO");
-                            else
-                                buffer = encoder.GetBytes("3CEDULANO EXISTE");
-
-                            clientStream.Write(buffer, 0, buffer.Length);
-                            clientStream.Flush();
-                            break;
+                        // 02-03 : código viaje
+                        // 04-05 : fila1 (00–13)
+                        // 06-10 : asientos fila1 (hasta 5, rellenar a la derecha con '0')
+                        // 11-12 : fila2 (00–13)
+                        // 13-14 : asientos fila2 (hasta 5, rellenar a la derecha con '0')
+                        // 15-19 : monto (5 dígitos, sin separadores)
+                        // 20-21 : capacidad disponible (2 dígitos)
+                        respuesta = BuildTramaExito(res, codigoViaje);
                     }
 
+                    Enviar(clientStream, encoder, respuesta);
                 }
             }
-            // tcpClient.Close();
-            // clientesConectados--;
-
-            //if (InvokeRequired)
-            //{
-            //  Invoke(new Action(() => Txt_Clientes.Text = clientesConectados.ToString()));
-            //}
-
+            finally
+            {
+                try { tcpClient.Close(); } catch { }
+                clientesConectados--;
+                if (InvokeRequired) Invoke(new Action(() => txtClientes.Text = Math.Max(clientesConectados, 0).ToString()));
+            }
         }
+
+
+        private static void Enviar(NetworkStream stream, ASCIIEncoding enc, string texto)
+        {
+            byte[] buffer = enc.GetBytes(texto);
+            stream.Write(buffer, 0, buffer.Length);
+            stream.Flush();
+        }
+
+        private static string BuildTramaExito(ResultadoVenta res, string codigoViaje)
+        {
+
+            string verificador = "1";
+
+
+            string codViaje = (codigoViaje ?? "").PadLeft(2, '0').Substring(0, 2);
+
+
+            string fila1 = (res.Fila1 < 0 ? 0 : res.Fila1).ToString("00");
+
+
+            string asientosFila1 = ToAsientosString(res.AsientosFila1);
+
+
+            string fila2 = (res.Fila2 < 0 ? 0 : res.Fila2).ToString("00");
+
+
+            string asientosFila2 = ToAsientosString(res.AsientosFila2);
+
+
+            int montoEntero = (int)Math.Round(res.Monto, MidpointRounding.AwayFromZero);
+            if (montoEntero < 0) montoEntero = 0;
+            string monto = montoEntero.ToString().PadLeft(5, '0').Substring(Math.Max(0, montoEntero.ToString().Length - 5)).PadLeft(5, '0');
+
+
+            int cap = res.CapacidadDisponible;
+            if (cap < 0) cap = 0;
+            if (cap > 99) cap = 99;
+            string capacidadDisp = cap.ToString("00");
+
+            return verificador + codViaje + fila1 + asientosFila1 + fila2 + asientosFila2 + monto + capacidadDisp;
+        }
+
+        private static string ToAsientosString(List<int> asientos)
+        {
+
+            if (asientos == null || asientos.Count == 0)
+                return "00000";
+
+            StringBuilder sb = new StringBuilder(5);
+            int count = 0;
+            foreach (var a in asientos)
+            {
+                if (count >= 5) break;
+                int seat = a < 0 ? 0 : a;
+                sb.Append(seat.ToString());
+                count++;
+            }
+            while (sb.Length < 5) sb.Append('0');
+            if (sb.Length > 5) return sb.ToString(0, 5);
+            return sb.ToString();
+        }
+
+
         public int Validar_Peticion(string Peticion)
         {
             switch (Peticion)
             {
-                case "001":
-                    return 1;
-                case "002":
-                    return 2;
-                default:
-                    return -1;
-
+                case "001": return 1;
+                case "002": return 2;
+                default: return -1;
             }
         }
     }
 }
-        
+
