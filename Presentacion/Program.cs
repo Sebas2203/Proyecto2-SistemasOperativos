@@ -26,6 +26,7 @@ namespace Servidor
 
             // Al cerrarlo, abrir el formulario Principal
             Application.Run(new Principal());*/
+            Application.Run(new MenuPrincipall());
         }
     }
 }
